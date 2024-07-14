@@ -7,8 +7,7 @@ import Link from "next/link";
 import useHeaderStore from "../app/store/HeaderStore";
 
 const Header = () => {
-  const { active, setActive } = useHeaderStore((state) => ({
-    active: state.active,
+  const { setActive } = useHeaderStore((state) => ({
     setActive: state.setActive,
   }));
 
@@ -19,7 +18,7 @@ const Header = () => {
           <Image src="/logo.png" width={146} height={68} alt="Logo" />
         </Link>
         <Gnb />
-        <div id="login">로그인</div>
+        <div id="login">Login</div>
       </div>
 
       <style jsx>{`
@@ -33,10 +32,6 @@ const Header = () => {
           padding: 0 20px;
 
           border-bottom: 1px solid lightgray;
-        }
-
-        #login {
-          background-color: pink;
         }
       `}</style>
     </>

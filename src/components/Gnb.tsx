@@ -10,8 +10,6 @@ const Gnb = () => {
     setActive: state.setActive,
   }));
 
-  console.log("active : ", active);
-
   return (
     <>
       <div id="container">
@@ -20,8 +18,6 @@ const Gnb = () => {
             return (
               <li
                 key={el.id}
-                // className={`gnb_li ${isActiveIdx === el.id ? "active" : ""}`}
-                // onClick={() => handleActiveLi(el.id)}>
                 className={`gnb_li ${active === el.id ? "active" : ""}`}
                 onClick={() => setActive(el.id)}>
                 <Link href={el.route}>{el.title}</Link>
@@ -36,8 +32,22 @@ const Gnb = () => {
         }
 
         .gnb_li {
+          position: relative;
           font-size: 18px;
           font-weight: 700;
+        }
+
+        .gnb_li::before {
+          content: "";
+          position: absolute;
+          bottom: -4px;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background-color: ${colorTk[2].midBlue};
+          transform: scaleX(0);
+          transform-origin: left;
+          transition: transform 0.3s ease;
         }
 
         .gnb_li.active {
@@ -47,6 +57,9 @@ const Gnb = () => {
         .gnb_li:hover {
           transition-duration: 0.3s;
           color: ${colorTk[0].topBlue};
+        }
+        .gnb_li:hover::before {
+          transform: scaleX(1);
         }
 
         .gnb_ul {
