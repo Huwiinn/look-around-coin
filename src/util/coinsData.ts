@@ -2,9 +2,10 @@ import axios from "axios";
 
 export const coinsData = async () => {
   try {
-    const resData = await axios.get("https://api.coinlore.net/api/tickers/");
+    const res = await axios.get("https://api.coinlore.net/api/tickers/");
+    const resData = res.data;
 
-    console.log(111, resData);
+    return resData;
   } catch (err) {
     console.log("err Message : ", err);
   }

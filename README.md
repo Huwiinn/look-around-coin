@@ -5,6 +5,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 - Next.js 14 App route
 - style-jsx
 - zustand
+- axios
+- chart.js ﹒ react-chartjs-2
 
 ## Getting Started
 
