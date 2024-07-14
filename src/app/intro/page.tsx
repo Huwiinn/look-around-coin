@@ -1,0 +1,15 @@
+"use client";
+import React from "react";
+import LayoutBody from "../../component/LayoutBody";
+
+const page = () => {
+  return (
+    <>
+      <LayoutBody>
+        <div>소개 페이지</div>
+      </LayoutBody>
+    </>
+  );
+};
+
+export default page;

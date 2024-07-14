@@ -1,17 +1,18 @@
 "use client";
-import Header from "./component/Header";
+import LayoutBody from "../component/LayoutBody";
 
 export default function Home() {
   return (
     <>
-      <div className="container">
-        <Header />
-        <h1 className="container">메인 컨텐츠</h1>
-      </div>
+      <LayoutBody>
+        <h1 className="title">메인 컨텐츠</h1>
+      </LayoutBody>
       <style jsx>{`
-        h1 {
-          color: blue;
-          font-size: 20px;
+        .container {
+          padding: 0 20px;
+        }
+        .title {
+          color: red;
         }
       `}</style>
     </>

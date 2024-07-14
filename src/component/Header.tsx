@@ -3,14 +3,17 @@
 import React from "react";
 import Gnb from "./Gnb";
 import Image from "next/image";
+import Link from "next/link";
 
 const Header = () => {
   return (
     <>
       <div id="header">
-        <Image src="/logo.png" width={60} height={60} alt="Logo" />
+        <Link href="/">
+          <Image src="/logo.png" width={146} height={68} alt="Logo" />
+        </Link>
         <Gnb />
-        <div id="profile">Profile</div>
+        <div id="login">로그인</div>
       </div>
 
       <style jsx>{`
@@ -19,16 +22,15 @@ const Header = () => {
           justify-content: space-between;
           align-items: center;
           width: 100%;
-          height: 80px;
+          height: 100px;
+          margin-bottom: 20px;
           padding: 0 20px;
 
-          background-color: lightgray;
+          border-bottom: 1px solid lightgray;
         }
 
-        #profile {
-          width: 32px;
-          height: 32px;
-          background-color: blue;
+        #login {
+          background-color: pink;
         }
       `}</style>
     </>
