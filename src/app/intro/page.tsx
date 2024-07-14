@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import LayoutBody from "../../component/LayoutBody";
+import LayoutBody from "../../components/LayoutBody";
 
 const page = () => {
   return (

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto, Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
-import Header from "../component/Header";
+import Header from "../components/Header";
 
 const roboto = Roboto({ subsets: ["latin"], weight: ["300", "500", "700"] });
 const notoSansKR = Noto_Sans_KR({ subsets: ["latin"] });

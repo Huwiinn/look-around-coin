@@ -4,12 +4,18 @@ import React from "react";
 import Gnb from "./Gnb";
 import Image from "next/image";
 import Link from "next/link";
+import useHeaderStore from "../app/store/HeaderStore";
 
 const Header = () => {
+  const { active, setActive } = useHeaderStore((state) => ({
+    active: state.active,
+    setActive: state.setActive,
+  }));
+
   return (
     <>
       <div id="header">
-        <Link href="/">
+        <Link href="/" onClick={() => setActive("")}>
           <Image src="/logo.png" width={146} height={68} alt="Logo" />
         </Link>
         <Gnb />

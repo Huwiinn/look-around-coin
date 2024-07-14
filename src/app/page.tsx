@@ -1,5 +1,5 @@
 "use client";
-import LayoutBody from "../component/LayoutBody";
+import LayoutBody from "../components/LayoutBody";
 
 export default function Home() {
   return (

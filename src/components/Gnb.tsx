@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { gnbRoute } from "../../route/gnb";
 import { colorTk } from "../style/token";
+import useHeaderStore from "../app/store/HeaderStore";
 
 const Gnb = () => {
-  const [isActiveIdx, setIsActiveIdx] = useState("");
+  const { active, setActive } = useHeaderStore((state) => ({
+    active: state.active,
+    setActive: state.setActive,
+  }));
 
-  const handleActiveLi = (id: string) => {
-    setIsActiveIdx(id);
-  };
+  console.log("active : ", active);
 
   return (
     <>
@@ -18,8 +20,10 @@ const Gnb = () => {
             return (
               <li
                 key={el.id}
-                className={`gnb_li ${isActiveIdx === el.id ? "active" : ""}`}
-                onClick={() => handleActiveLi(el.id)}>
+                // className={`gnb_li ${isActiveIdx === el.id ? "active" : ""}`}
+                // onClick={() => handleActiveLi(el.id)}>
+                className={`gnb_li ${active === el.id ? "active" : ""}`}
+                onClick={() => setActive(el.id)}>
                 <Link href={el.route}>{el.title}</Link>
               </li>
             );
