@@ -5,6 +5,7 @@ import Gnb from "./Gnb";
 import Image from "next/image";
 import Link from "next/link";
 import useHeaderStore from "../app/store/HeaderStore";
+import { colorTk } from "../style/token";
 
 const Header = () => {
   const { setActive } = useHeaderStore((state) => ({
@@ -18,7 +19,9 @@ const Header = () => {
           <Image src="/logo.png" width={146} height={68} alt="Logo" />
         </Link>
         <Gnb />
-        <div id="login">Login</div>
+        <Link href="/" id="login">
+          <span className="login_btn">Login</span>
+        </Link>
       </div>
 
       <style jsx>{`
@@ -28,10 +31,13 @@ const Header = () => {
           align-items: center;
           width: 100%;
           height: 100px;
-          margin-bottom: 20px;
           padding: 0 20px;
 
           border-bottom: 1px solid lightgray;
+        }
+
+        .login_btn:hover {
+          color: ${colorTk[0].topBlue};
         }
       `}</style>
     </>
