@@ -5,46 +5,9 @@ import LayoutBody from "../components/LayoutBody";
 import { coinsData, coinsGlobalData } from "../util/coinsData";
 import { colorTk } from "../style/token";
 import { globalCoinsInfoData } from "../../data/common";
-import { Line } from "react-chartjs-2";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js";
+import CoinMarketChart from "../components/CoinMarketChart";
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-);
-
-const options = {};
-const lineChartData = {
-  labels: ["월", "화", "수", "목", "금", "토", "일"],
-  datasets: [
-    {
-      label: "내 걸음 수",
-      data: [3000, 5000, 4500, 6000, 8000, 7000, 9000],
-      borderColor: "rgb(75, 192,192)",
-    },
-    {
-      label: "평균 걸음 수",
-      data: [8000, 7000, 10000, 6000, 8000, 5000, 12000],
-      borderColor: "rgb(0, 22, 324)",
-    },
-  ],
-};
-
-export type GlobalCoinsInfo = {
+export type GlobalCoinsInfoType = {
   active_markets: number; // 활성화 코인 개수
   avg_change_percent: string; // 평균 변화 퍼센트
   btc_d: string;
@@ -60,7 +23,7 @@ export type GlobalCoinsInfo = {
 };
 
 export default function Home() {
-  const [globalCoins, setGlobalCoins] = useState<GlobalCoinsInfo>({
+  const [globalCoins, setGlobalCoins] = useState<GlobalCoinsInfoType>({
     active_markets: 0,
     avg_change_percent: "",
     btc_d: "",
@@ -86,7 +49,7 @@ export default function Home() {
 
     const fetchCoinData = async () => {
       const data = await coinsData();
-      // console.log("data : ", data);
+      console.log("data : ", data.data[0]);
       setCoinData(data);
     };
 
@@ -96,6 +59,10 @@ export default function Home() {
 
   const timestamp = Number(coinData.info.time);
   const date = new Intl.DateTimeFormat("ko-KR").format(timestamp * 1000);
+
+  // db에 해당 시장 데이터를 받고, 저장시켜서 데이터를 누적시켜야 할 것 같음.
+  // 누적시킨 데이터가 있어야 과거부터 현재의 변화 등락률을 chart로 표현 가능할 것 같다.
+  // => 지금은 24시간 기준으로 데이터를 받아오고 있음.
 
   return (
     <>
@@ -122,8 +89,7 @@ export default function Home() {
               // 로딩스피너 적용해야함
             )}
           </div>
-
-          <Line options={options} data={lineChartData} />
+          <CoinMarketChart coinData={coinData} />
         </section>
       </LayoutBody>
       <style jsx>{`
