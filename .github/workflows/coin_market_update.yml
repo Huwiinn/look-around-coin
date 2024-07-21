@@ -1,8 +1,8 @@
 name: Coin Market update fetch Data
 
 # on:
-  # schedule:
-    # - cron: '*/1 * * * *' # 매 1분마다 실행
+# schedule:
+# - cron: '*/1 * * * *' # 매 1분마다 실행
 on:
   push:
     branches:
@@ -18,16 +18,16 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '18'
+          node-version: "18"
 
       - name: Install dependencies
         run: npm install
 
       - name: fetchCoinMarketData
-        run: node dist/fetchData.js # 파일 확장자 수정 (컴파일된 JavaScript 파일로 실행)
+        run: node fetchData.js # 파일 확장자 수정 (컴파일된 JavaScript 파일로 실행)
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
-          
+
       - name: Workflow complete
         run: echo "워크플로우 실행 완료"
