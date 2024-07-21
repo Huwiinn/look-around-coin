@@ -1,15 +1,12 @@
 name: Coin Market update fetch Data
 
-# on:
-# schedule:
-# - cron: '*/1 * * * *' # 매 1분마다 실행
 on:
   push:
     branches:
       - main # main 브랜치에 커밋이 발생할 때마다 실행
 
 jobs:
-  echo:
+  fetch-and-store:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -24,7 +21,7 @@ jobs:
         run: npm install
 
       - name: fetchCoinMarketData
-        run: node dist/fetchData.js # 파일 확장자 수정 (컴파일된 JavaScript 파일로 실행)
+        run: node fetchData.js # 파일 확장자 수정 (컴파일된 JavaScript 파일로 실행)
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
