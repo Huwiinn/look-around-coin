@@ -1,8 +1,12 @@
 name: Coin Market update fetch Data
 
+# on:
+  # schedule:
+    # - cron: '*/1 * * * *' # 매 1분마다 실행
 on:
-  schedule:
-    - cron: '*/1 * * * *' # 매 1분마다 실행
+  push:
+    branches:
+      - main # main 브랜치에 커밋이 발생할 때마다 실행
 
 jobs:
   echo:
