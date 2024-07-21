@@ -24,5 +24,6 @@ jobs:
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          
       - name: Workflow complete
-      - run: "워크플로우 실행 완료"
+      - run: echo "워크플로우 실행 완료"
