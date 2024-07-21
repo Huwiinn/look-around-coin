@@ -24,7 +24,7 @@ jobs:
         run: npm install
 
       - name: fetchCoinMarketData
-        run: node fetchData.js # 파일 확장자 수정 (컴파일된 JavaScript 파일로 실행)
+        run: node dist/fetchData.js # 파일 확장자 수정 (컴파일된 JavaScript 파일로 실행)
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
