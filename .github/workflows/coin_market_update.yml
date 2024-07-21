@@ -1,31 +1,12 @@
 name : Coin Market update fetch Data;
 
-on :
-  schedule:
-    - cron: '0 6 * * *' # 매일 오전 6시에 실행
+on : push
     
 jobs :
   echo :
     runs-on : ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '18'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Fetch and store data
-        run: node fetch-and-store.js
-        env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
-
-      - run : "워크플로우 실행 완료"
+      - run : echo "워크플로우 실행 완료"
 
       
     
