@@ -14,10 +14,10 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 
 const fetchData = app.prepare().then(() => {
-  createServer((req: any, res: any) => {
+  createServer((req, res) => {
     const parsedUrl = parse(req.url, true);
     handle(req, res, parsedUrl);
-  }).listen(3000, async (err: any) => {
+  }).listen(3000, async (err) => {
     if (err) throw err;
     console.log("> Ready on http://localhost:3000");
 
