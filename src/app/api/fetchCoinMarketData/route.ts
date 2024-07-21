@@ -7,9 +7,6 @@ const supabaseUrl = "https://hjgufwdycaoubgxptwzn.supabase.co";
 const supabaseKey = process.env.SUPABASE_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey as string);
 
-console.log(111111111111111);
-console.log("-------------- : ", supabase);
-
 // 코인 시장 데이터 수집 함수
 async function fetchCoinMarketData() {
   try {
@@ -55,7 +52,7 @@ async function insertCoinMarketData(data: any) {
 export async function GET() {
   console.log("API Route Accessed");
   const data = await fetchCoinMarketData();
-  console.log("===================== : ", data);
+
   if (data && data.length > 0) {
     await insertCoinMarketData(data[0]); // API 응답에서 첫 번째 데이터 사용
     return NextResponse.json({
@@ -68,3 +65,6 @@ export async function GET() {
     );
   }
 }
+
+// 깃헙 워크플로우 만들어서 크론잡 실행시켜야함
+// 크론잡 : 반복 실행되어야 하는..
