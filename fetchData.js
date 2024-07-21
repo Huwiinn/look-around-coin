@@ -13,7 +13,7 @@ const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
-const fetchData = app.prepare().then(() => {
+app.prepare().then(() => {
   createServer((req, res) => {
     const parsedUrl = parse(req.url, true);
     handle(req, res, parsedUrl);
@@ -33,5 +33,3 @@ const fetchData = app.prepare().then(() => {
     process.exit(0);
   });
 });
-
-export default fetchData;
