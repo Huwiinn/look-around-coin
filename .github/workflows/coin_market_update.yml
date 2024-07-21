@@ -20,9 +20,9 @@ jobs:
         run: npm install
 
       - name: fetchCoinMarketData
-        run: node route.ts
+        run: node src/api/fetchCoinMarketData/route.ts
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
-
+      - name: Workflow complete
       - run: "워크플로우 실행 완료"
