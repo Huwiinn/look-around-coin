@@ -22,9 +22,10 @@ app.prepare().then(() => {
     console.log("> Ready on http://localhost:3000");
 
     try {
-      const response = await axios.get(
-        "http://localhost:3000/api/fetchCoinMarketData"
-      );
+      // const response = await axios.get(
+      //   "http://localhost:3000/api/fetchCoinMarketData"
+      // );
+      coinsGlobalData();
       console.log("API call successful:", response.data);
     } catch (error) {
       console.error("Error calling API:", error);
