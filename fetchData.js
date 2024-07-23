@@ -4,9 +4,6 @@ const next = require("next");
 const axios = require("axios");
 require("dotenv").config();
 
-console.log("SUPABASE_URL:", supabaseUrl);
-console.log("SUPABASE_KEY:", supabaseKey);
-
 if (!supabaseUrl) {
   throw new Error("supabaseUrl is required.");
 }
