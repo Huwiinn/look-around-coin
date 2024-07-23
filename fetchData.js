@@ -1,4 +1,4 @@
-export const coinsGlobalAutoFetchData = async () => {
+const coinsGlobalAutoFetchData = async () => {
   try {
     const res = await axios.get("https://api.coinlore.net/api/global");
     const resData = res.data;
