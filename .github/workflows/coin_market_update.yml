@@ -3,7 +3,7 @@ name: Coin Market update fetch Data
 on:
   push:
     branches:
-      - main # main 브랜치에 커밋이 발생할 때마다 실행
+      - yaml-test # main 브랜치에 커밋이 발생할 때마다 실행
 
 jobs:
   fetch-and-store:
