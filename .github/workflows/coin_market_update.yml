@@ -8,9 +8,7 @@ on:
 jobs:
   fetch-and-store:
     runs-on: ubuntu-latest
-    env:
-      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-      SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -22,11 +20,6 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-
-      - name: Print environment variables
-        run: |
-          echo "SUPABASE_URL=${SUPABASE_URL}"
-          echo "SUPABASE_KEY=${SUPABASE_KEY}"
 
       - name: fetchCoinMarketData
         run: node fetchData.js # JavaScript 파일 실행

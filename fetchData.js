@@ -2,11 +2,7 @@ const { createServer } = require("http");
 const { parse } = require("url");
 const next = require("next");
 const axios = require("axios");
-const { createClient } = require("@supabase/supabase-js");
 require("dotenv").config();
-
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_KEY;
 
 console.log("SUPABASE_URL:", supabaseUrl);
 console.log("SUPABASE_KEY:", supabaseKey);
@@ -18,8 +14,6 @@ if (!supabaseUrl) {
 if (!supabaseKey) {
   throw new Error("supabaseKey is required.");
 }
-
-const supabase = createClient(supabaseUrl, supabaseKey);
 
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
