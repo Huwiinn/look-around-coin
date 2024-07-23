@@ -4,15 +4,6 @@ const next = require("next");
 const axios = require("axios");
 require("dotenv").config();
 
-if (!supabaseUrl) {
-  throw new Error("supabaseUrl is required.");
-}
-
-if (!supabaseKey) {
-  throw new Error("supabaseKey is required.");
-}
-
-const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
