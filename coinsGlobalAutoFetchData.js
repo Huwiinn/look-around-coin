@@ -39,8 +39,6 @@ try {
         },
       ]);
 
-    console.log({ insertData, error });
-
     if (error) {
       console.error("insertCoinMarketData Fn Error inserting data:", error);
     } else {
@@ -51,7 +49,9 @@ try {
   async function main() {
     try {
       const data = await coinsGlobalAutoFetchData(); // 데이터를 가져옴
-      await insertCoinMarketData(data); // 데이터를 데이터베이스에 삽입
+      await insertCoinMarketData(data[0]); // 데이터를 데이터베이스에 삽입
+
+      console.log("Update DB success");
     } catch (error) {
       console.log("main Fn Error reason : ", error);
     }
