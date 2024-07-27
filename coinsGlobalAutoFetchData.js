@@ -1,4 +1,5 @@
 const axios = require("axios");
+import { createClient } from "@supabase/supabase-js";
 
 try {
   // Supabase 설정
