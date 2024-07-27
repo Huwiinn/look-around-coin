@@ -23,6 +23,8 @@ jobs:
         run: npm install
 
       - name: fetchCoinMarketData
+        env:
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
         run: node coinsGlobalAutoFetchData.js # JavaScript 파일 실행
 
       - name: Workflow complete
