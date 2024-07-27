@@ -3,7 +3,7 @@ name: Coin Market update fetch Data
 on:
   push:
     branches:
-      - yaml-test # main 브랜치에 커밋이 발생할 때마다 실행
+      - main # main 브랜치에 커밋이 발생할 때마다 실행
 
 jobs:
   fetch-and-store:
@@ -23,6 +23,9 @@ jobs:
 
       - name: fetchCoinMarketData
         run: node fetchData.js # JavaScript 파일 실행
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
 
       - name: Workflow complete
         run: echo "워크플로우 실행 완료"

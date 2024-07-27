@@ -9,6 +9,10 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 - chart.js ﹒ react-chartjs-2
 - github actions
 
+## This project's purpose
+
+- 웹으로 구현 후, PWA로 전환시켜보기
+
 ## Getting Started
 
 First, run the development server:
