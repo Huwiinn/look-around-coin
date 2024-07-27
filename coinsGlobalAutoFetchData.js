@@ -1,3 +1,5 @@
+const axios = require("axios");
+
 const coinsGlobalAutoFetchData = async () => {
   try {
     const res = await axios.get("https://api.coinlore.net/api/global");
