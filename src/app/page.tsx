@@ -6,6 +6,13 @@ import { coinsData, coinsGlobalData } from "../util/coinsData";
 import { colorTk } from "../style/token";
 import { globalCoinsInfoData } from "../../data/common";
 import CoinMarketChart from "../components/CoinMarketChart";
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
 
 export type GlobalCoinsInfoType = {
   active_markets: number; // 활성화 코인 개수
@@ -40,6 +47,15 @@ export default function Home() {
     data: [],
     info: { coins_num: "", time: "" },
   });
+
+  // const queryClient = useQueryClient();
+
+  const query = useQuery({
+    queryKey: ["marketKeynote"],
+    queryFn: coinsGlobalData,
+  });
+
+  console.log("query : ", query);
 
   useEffect(() => {
     const fetchGlobalCoins = async () => {
@@ -89,16 +105,17 @@ export default function Home() {
               // 로딩스피너 적용해야함
             )}
           </div>
-          <CoinMarketChart coinData={coinData} />
         </section>
+        <h2>현재 시장가 상위 10개 코인</h2>
+        <CoinMarketChart coinData={coinData} />
       </LayoutBody>
       <style jsx>{`
-        .container {
-          padding: 0 20px;
-        }
-
         #sec1 {
-          padding-top: 80px;
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
         }
 
         .info_title {
@@ -115,6 +132,13 @@ export default function Home() {
           flex-direction: column;
           justify-content: center;
           align-items: center;
+          width: 100%;
+          height: 100vh;
+          max-width: 1400px;
+          background-image: url("/main_bg.png");
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: contain;
         }
 
         .info_wrap {

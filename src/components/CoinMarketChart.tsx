@@ -1,4 +1,5 @@
 import React from "react";
+import { colorTk } from "../style/token";
 import { Line, Bar } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -56,7 +57,7 @@ const CoinMarketChart = (coinData: any) => {
       {
         label: "현재 코인 가격",
         data: topCoinPrice,
-        backgroundColor: "rgb(75, 192,192)",
+        backgroundColor: colorTk[0].midBlue,
       },
     ],
   };

@@ -44,7 +44,7 @@ const Gnb = () => {
           left: 0;
           width: 100%;
           height: 2px;
-          background-color: ${colorTk[2].midBlue};
+          background-color: ${colorTk[0].midBlue};
           transform: scaleX(0);
           transform-origin: left;
           transition: transform 0.3s ease;

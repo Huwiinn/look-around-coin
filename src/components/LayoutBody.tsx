@@ -6,6 +6,8 @@ const LayoutBody = ({ children }: { children: React.ReactNode }) => {
       <div className="container">{children}</div>
       <style jsx>{`
         .container {
+          width: 100%;
+          height: 100%;
           padding: 0 20px;
         }
       `}</style>

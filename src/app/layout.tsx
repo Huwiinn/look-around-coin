@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Roboto, Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
 import Header from "../components/Header";
+import ReactQueryProviders from "../util/ReactQueryProvider";
 
 const roboto = Roboto({ subsets: ["latin"], weight: ["300", "500", "700"] });
 const notoSansKR = Noto_Sans_KR({ subsets: ["latin"] });
@@ -20,8 +21,10 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={roboto.className}>
-        <Header />
-        <main>{children}</main>
+        <ReactQueryProviders>
+          <Header />
+          <main>{children}</main>
+        </ReactQueryProviders>
       </body>
     </html>
   );

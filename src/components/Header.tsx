@@ -20,7 +20,7 @@ const Header = () => {
         </Link>
         <Gnb />
         <Link href="/" id="login">
-          <span className="login_btn">Login</span>
+          <p className="login_btn">Login</p>
         </Link>
       </div>
 
@@ -29,11 +29,22 @@ const Header = () => {
           display: flex;
           justify-content: space-between;
           align-items: center;
+          position: fixed;
+          top: 0;
+          left: 0;
+          z-index: 10;
           width: 100%;
           height: 100px;
           padding: 0 20px;
 
           border-bottom: 1px solid lightgray;
+          background-color: rgba(255, 255, 255, 0.7);
+          box-shadow: 2px 2px 2px lightgrey;
+        }
+
+        .login_btn {
+          width: 146px;
+          text-align: center;
         }
 
         .login_btn:hover {

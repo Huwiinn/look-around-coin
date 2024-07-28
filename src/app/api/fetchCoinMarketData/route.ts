@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 
 // Supabase 설정
 const supabaseUrl = "https://hjgufwdycaoubgxptwzn.supabase.co";
-const supabaseKey = process.env.SUPABASE_KEY;
+const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey as string);
 
 // 코인 시장 데이터 수집 함수
