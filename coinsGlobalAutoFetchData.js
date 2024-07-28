@@ -46,10 +46,56 @@ try {
     }
   }
 
+  // 시장가 상위 10개 코인 데이터 수집
+  async function getPriceTopTenCoinsData() {
+    try {
+      const response = await axios.get("https://api.coinlore.net/api/tickers/");
+      return response.data.data.slice(0, 10);
+    } catch (error) {
+      console.error("Error get top ten coins data:", error);
+      return null;
+    }
+  }
+
+  // 데이터베이스에 시장가 상위 10개 코인 데이터 삽입
+  async function insertPriceTopTenCoinsData(data) {
+    try {
+      data.map(async (coin) => {
+        await supabase.from("priceTopTenCoins").insert([
+          {
+            csupply: coin.csupply,
+            id: coin.id,
+            market_cap_usd: coin.market_cap_usd,
+            msupply: coin.msupply,
+            name: coin.name,
+            nameid: coin.nameid,
+            percent_change_1h: coin.percent_change_1h,
+            percent_change_7d: coin.percent_change_7d,
+            percent_change_24h: coin.percent_change_24h,
+            price_btc: coin.price_btc,
+            price_usd: coin.price_usd,
+            rank: coin.rank,
+            symbol: coin.symbol,
+            tsupply: coin.tsupply,
+            volume24: coin.volume24,
+            volume24a: coin.volume24a,
+          },
+        ]);
+      });
+    } catch (err) {
+      console.log("시장가 상위 10개 코인 데이터 Error: ", err);
+    }
+  }
+
   async function main() {
     try {
-      const data = await coinsGlobalAutoFetchData(); // 데이터를 가져옴
-      await insertCoinMarketData(data[0]); // 데이터를 데이터베이스에 삽입
+      // 코인 시장 데이터
+      const globalCoinData = await coinsGlobalAutoFetchData(); // 데이터를 가져옴
+      await insertCoinMarketData(globalCoinData[0]); // 데이터를 데이터베이스에 삽입
+
+      // 코인 시장가 상위 10개 코인 데이터
+      const data = await getPriceTopTenCoinsData(); // 데이터를 가져옴
+      await insertPriceTopTenCoinsData(data); // 데이터를 데이터베이스에 삽입
 
       console.log("Update DB success");
     } catch (error) {

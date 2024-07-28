@@ -62,7 +62,7 @@ const CoinMarketChart = (coinData: any) => {
   };
 
   // console.log("coinData : ", coinData);
-  console.log("topCoinPrice : ", topCoinPrice);
+  // console.log("topCoinPrice : ", topCoinPrice);
   return <Bar options={options} data={lineChartData} />;
 };
 
