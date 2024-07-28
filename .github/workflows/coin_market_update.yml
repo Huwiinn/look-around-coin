@@ -3,9 +3,9 @@ name: Coin Market update fetch Data
 on:
   push: # push 이벤트 발생 시 실행
     branches:
-      - "main" # 모든 브랜치에 push될 때 실행
+      - "main" # main Branch push될 때 실행
   schedule: # 스케줄 이벤트 발생 시 실행
-    - cron: "*/1 * * * *" # 매 1분마다 실행
+    - cron: "0 * * * *" # 정각마다 실행
 
 jobs:
   fetch-and-store:

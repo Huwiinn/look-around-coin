@@ -94,8 +94,8 @@ try {
       await insertCoinMarketData(globalCoinData[0]); // 데이터를 데이터베이스에 삽입
 
       // 코인 시장가 상위 10개 코인 데이터
-      const data = await getPriceTopTenCoinsData(); // 데이터를 가져옴
-      await insertPriceTopTenCoinsData(data); // 데이터를 데이터베이스에 삽입
+      const priceTopTenCoinsData = await getPriceTopTenCoinsData(); // 데이터를 가져옴
+      await insertPriceTopTenCoinsData(priceTopTenCoinsData); // 데이터를 데이터베이스에 삽입
 
       console.log("Update DB success");
     } catch (error) {
